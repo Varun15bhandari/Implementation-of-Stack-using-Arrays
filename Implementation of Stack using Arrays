@@ -1,0 +1,55 @@
+class ArrayStack {
+    private int[] arr;
+    private int capacity;
+    private int top;
+
+    public ArrayStack(int size) {  // contructor 
+        capacity=size;
+        arr=new int[capacity];
+        top=-1;
+    }
+
+/* The no-argument constructor ArrayStack() is defined.
+   Inside the body of this constructor, it calls another constructor ArrayStack(int size) by passing the value 1000 as the argument using this(1000);.
+   This means that when the no-argument constructor is called, it will automatically create an ArrayStack object with a default capacity of 1000.
+*/
+    public ArrayStack() {       // constructor chaining which allows one constructor to call another constructor
+        this(1000);
+    }
+
+    public void push(int x) {   // Insertion of a element to stack 
+         // checking exception that overflow means trying to insert a element in full stack
+        if(top >= capacity-1){
+            System.out.println("stack is overflow");
+            return;
+        }
+        arr[++top]=x;
+
+       
+    }
+
+    public int pop() {
+  // checking exception underflow means trying to remove a elements in empty stack (underflow)
+        if(isEmpty()){
+            System.out.println("stack is underflow");
+            return -1;
+        }
+        
+        return arr[top--];
+      
+    }
+
+    public int top() {
+ // if stack is empty how can i get top element from the stack!
+         if(isEmpty()){
+            System.out.println("stack is underflow");
+            return -1;
+        }
+         return arr[top];
+        
+    }
+
+    public boolean isEmpty() {  
+      return top==-1;
+    }
+}
